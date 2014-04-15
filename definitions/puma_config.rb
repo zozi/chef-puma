@@ -125,7 +125,7 @@ define :puma_config, owner: nil, group: nil, directory: nil, puma_directory: nil
   puma_params = params
   if params[:monit]
     include_recipe "monit"
-    monitrc puma_params[:name], :action => :enable do
+    monit_monitrc puma_params[:name], :action => :enable do
       template_source 'monitrc.erb'
       template_cookbook 'puma'
       variables puma_params
